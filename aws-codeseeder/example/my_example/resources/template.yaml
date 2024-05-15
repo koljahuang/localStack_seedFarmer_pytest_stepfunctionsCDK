@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: |
+  SoftwareLabs Remote Toolkit Test stack
+
+Parameters:
+  RoleName:
+    Type: String
+
+Resources:
+  CodeArtifactPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      Roles:
+        - !Ref RoleName
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - codeartifact:Create*
+              - codeartifact:DeleteDomain
+              - codeartifact:DeleteRepository
+              - codeartifact:Describe*
+              - codeartifact:Get*
+              - codeartifact:List*
+              - codeartifact:TagResource
+              - codeartifact:Associate*
+            Resource:
+              - !Sub arn:aws:codeartifact:${AWS::Region}:${AWS::AccountId}:domain/aws-orbit*
+              - !Sub arn:aws:codeartifact:${AWS::Region}:${AWS::AccountId}:repository/aws-orbit*
+          - Effect: Allow
+            Action:
+              - codeartifact:GetAuthorizationToken
+              - codeartifact:GetRepositoryEndpoint
+              - codeartifact:ReadFromRepository
+            Resource: '*'

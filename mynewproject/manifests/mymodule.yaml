@@ -1,0 +1,9 @@
+name: mytest
+path: modules/mygroup/mymodule
+# parameters:
+#   - name: solution-id
+#     value: id
+#   - name: solution-name
+#     value: name
+#   - name: solution-version
+#     value: version
