@@ -1,1 +1,0 @@
-{"event": {"status": "SUCCESS"}, "status": "SUCCEEDED"}

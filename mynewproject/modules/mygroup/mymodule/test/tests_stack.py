@@ -2,12 +2,11 @@ import pytest
 import boto3
 import json
 import time
-# from . import stack_name
 
 
 @pytest.mark.parametrize("stack_name", ['aws-stepfunctions-demo'])
 def test_aws_stepfunctions_demo(stack_name):
-    client = boto3.client('stepfunctions', 
+    client = boto3.client('stepfunctions',
                           aws_access_key_id='test',
                           aws_secret_access_key='test',
                           endpoint_url='http://localhost:4566')
@@ -38,7 +37,7 @@ def test_aws_stepfunctions_demo(stack_name):
             maxResults=1,
         )
         events = response['events']
-        last_event = events[0] 
+        last_event = events[0]
         if last_event['type'] == 'ExecutionSucceeded':
             print('Execution succeeded!')
             break

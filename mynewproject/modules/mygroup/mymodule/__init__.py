@@ -1,1 +1,0 @@
-from .app import stack_name

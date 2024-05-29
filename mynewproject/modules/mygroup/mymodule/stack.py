@@ -65,6 +65,6 @@ class JobPollerStack(Stack):
         # Create state machine
         sm = _aws_stepfunctions.StateMachine(
             self, "StateMachine",
-            definition_body=_aws_stepfunctions.DefinitionBody.from_chainable(chain),
+            definition=chain,
             timeout=Duration.minutes(5),
         )
